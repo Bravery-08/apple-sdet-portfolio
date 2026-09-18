@@ -1,0 +1,20 @@
+# UI automation
+selenium>=4.6              # 4.6+ ships Selenium Manager — no manual driver downloads needed
+
+# Test framework & reporting
+pytest
+pytest-html                # HTML test reports (Week 2)
+allure-pytest               # Allure reporting (Week 8)
+
+# Mobile automation (Week 5)
+Appium-Python-Client
+
+# Modern web automation — only if you picked Playwright over Cypress in Week 6.
+# Cypress is JS/npm-based and wouldn't go here at all; delete this line if you went that route.
+playwright
+
+# Week 9's data-validation script: sqlite3 is in Python's standard library, so there's
+# nothing to add here if you stick with SQLite for the sample dataset (the simplest choice
+# for a portfolio project — zero setup, no server to run). Uncomment if you'd rather point
+# it at a real Postgres instance instead, for something closer to production:
+# psycopg2-binary

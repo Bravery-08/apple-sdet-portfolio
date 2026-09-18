@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Java (Maven)
+target/
+*.class
+
+# Java (Gradle, if you use it instead of Maven)
+.gradle/
+build/
+
+# Node/npm — only relevant if you went with Cypress instead of Playwright in Week 6
+node_modules/
+
+# IDEs
+.idea/
+.vscode/
+
+# OS clutter (the .DS_Store line matters once you're doing the macOS touchpoints)
+.DS_Store
+Thumbs.db
+
+# Test artifacts & reports
+allure-results/
+allure-report/
+*.html
+screenshots/
+logs/
+
+# Environment variables / secrets — worth having even before you actually need it
+.env
