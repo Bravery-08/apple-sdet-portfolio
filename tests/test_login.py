@@ -1,14 +1,9 @@
-from selenium import webdriver
 from pages.home_page import HomePage
 from pages.login_page import LoginPage
 
-driver = webdriver.Chrome()
-driver.get('https://www.automationexercise.com')
-
-home = HomePage(driver)
-home.go_to_login()
-
-login = LoginPage(driver)
-login.login('test@example.com', 'wrongpassword')
-
-driver.quit()
+def test_invalid_login_shows_error(driver):
+    driver.get('https://www.automationexercise.com')
+    HomePage(driver).go_to_login()
+    LoginPage(driver).login('test@example.com', 'wrongpassword')
+    
+    assert 'incorrect' in driver.page_source.lower()
