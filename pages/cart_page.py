@@ -1,9 +1,13 @@
 from selenium.webdriver.common.by import By
+from pages.base_page import BasePage, retry_on_popup
 
-class CartPage:
+
+class CartPage(BasePage):
     def __init__(self, driver):
-        self.driver=driver
-        self.product=(By.ID, "product-2")
-        
+        super().__init__(driver)
+        self.driver = driver
+        self.product = (By.ID, "product-2")
+
+    @retry_on_popup()
     def find_product(self):
         return self.driver.find_element(*self.product)

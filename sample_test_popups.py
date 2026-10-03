@@ -9,6 +9,12 @@ driver.get("https://www.automationexercise.com")
 wait = WebDriverWait(driver, 10)
 
 
+def click_on(params):
+    element = driver.find_element(*params)
+    if element.is_displayed() and element.is_enabled():
+        element.click()
+
+
 def clear_popup(driver=driver):
     iframes = driver.find_elements(
         By.CSS_SELECTOR, 'iframe[title="Advertisement"]')
@@ -29,43 +35,18 @@ def clear_popup(driver=driver):
     return
 
 
-# 1
-loginbutton = driver.find_element(By.XPATH, "//a[@href='/login']")
-print(loginbutton.text)
+while True:
+    try:
+        click_on((By.XPATH, "//a[@href='/products']"))
+    except:
+        clear_popup()
+        continue
 
-clear_popup()
-
-# 2
-products = driver.find_element(By.XPATH, "//a[@href='/products']")
-products.click()
-
-clear_popup()
-
-# need to wait for accessing elements after loading new page
-search = wait.until(
-    EC.visibility_of_element_located((By.ID, "search_product"))
-)
-print(search.get_attribute("placeholder"))
-
-clear_popup()
-
-# 3
-home = driver.find_element(By.XPATH, "//a[@href='/']")
-home.click()
-
-clear_popup()
-
-product_card = wait.until(
-    EC.presence_of_element_located(
-        (By.XPATH, "//img[@src='/get_product_picture/1']/following-sibling::p"))
-)
-print(product_card.text)
-
-clear_popup()
-
-# 4
-cart = driver.find_element(By.XPATH, "//a[@href='/view_cart']")
-print(cart.text)
+    try:
+        click_on((By.XPATH, "//a[@href='/']"))
+    except:
+        clear_popup()
+        continue
 
 # input()
-driver.quit()
+# driver.quit()
