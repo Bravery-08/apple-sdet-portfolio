@@ -1,6 +1,7 @@
 from selenium.webdriver.common.by import By
 from functools import wraps
 from selenium.common.exceptions import NoSuchElementException, ElementClickInterceptedException
+from selenium.webdriver.support.ui import WebDriverWait
 
 
 def retry_on_popup(max_retries=3):
@@ -22,6 +23,7 @@ def retry_on_popup(max_retries=3):
 class BasePage:
     def __init__(self, driver):
         self.driver = driver
+        self.wait=WebDriverWait(self.driver,10)
         self.popup_close = (By.CLASS_NAME, "continue-prompt-text")
 
     def remove_popup(self):

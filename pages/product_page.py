@@ -6,7 +6,7 @@ from selenium.common.exceptions import NoSuchElementException
 class ProductPage(BasePage):
     def __init__(self, driver):
         super().__init__(driver)
-        self.driver = driver
+
         self.search_bar = (By.ID, "search_product")
         self.search_button = (By.ID, "submit_search")
         self.product = (By.CLASS_NAME, "product-image-wrapper")
