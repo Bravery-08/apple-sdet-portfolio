@@ -33,7 +33,7 @@ class LoginPage(BasePage):
     @retry_on_popup()
     def signup(self, name, email):
         name_input = self.wait.until(
-            EC.visibility_of_element_located(self.signup_name)
+            EC.element_to_be_clickable(self.signup_name)
         )
 
         name_input.clear()
@@ -44,3 +44,12 @@ class LoginPage(BasePage):
         email_input.send_keys(email)
 
         self.driver.find_element(*self.signup_button).click()
+
+    def get_email_validation(self):
+        email_input = self.driver.find_element(*self.signup_email)
+
+        message = self.driver.execute_script(
+            "return arguments[0].validationMessage;", email_input
+        )
+
+        return message

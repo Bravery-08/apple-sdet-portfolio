@@ -1,4 +1,5 @@
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
 from pages.base_page import BasePage, retry_on_popup
 from selenium.common.exceptions import NoSuchElementException
 
@@ -17,7 +18,9 @@ class ProductPage(BasePage):
 
     @retry_on_popup()
     def search(self, string):
-        search_input = self.driver.find_element(*self.search_bar)
+        search_input = self.wait.until(
+            EC.visibility_of_element_located(self.search_bar)
+        )
         search_input.clear()
         search_input.send_keys(string)
 
